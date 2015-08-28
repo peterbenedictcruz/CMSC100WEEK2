@@ -1,0 +1,7 @@
+var student = require('./../controllers/student');
+
+module.exports = function(router){
+	router.route('/students')
+	.get(student.find);
+	return router;
+};
