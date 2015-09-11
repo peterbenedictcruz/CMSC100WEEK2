@@ -1,0 +1,52 @@
+var request = require('supertest'),
+      should = require('should-http');
+      
+      describe('student', function(){
+            var url = 'localhost:5000';
+            describe('find()', function(){
+                  
+                  it("should retrieve all student records", function(done){
+                        request(url)
+                              .get('/students')
+                              .end(function(err, res){
+                                    if(err) throw err;
+                                    res.should.have.status(200);  //testing ng response kung 200
+                                    res.body.should.be.an.instanceOf(Array);  //test yung body ng response kung array
+                                    done();
+                        });
+                  });
+            
+            });
+             describe('findOne()', function(){
+                  
+                  it("should retrieve a student record", function(done){
+                        request(url)
+                              .get('/students/1111-11111')
+                              .end(function(err, res){
+                                    if(err) throw err;
+                                    res.should.have.status(200);  //testing ng response kung 200
+                                    res.body.should.be.an.instanceOf(Object);  //test yung body ng response kung array
+                                          
+                                    done();
+                        });
+                  });
+            
+            });
+            
+            describe('insert()', function(){
+                  
+                  it("should return new student record", function(done){
+                        request(url)
+                              .get('/students/1111-11111')
+                              .end(function(err, res){
+                                    if(err) throw err;
+                                    res.should.have.status(200);  //testing ng response kung 200
+                                    res.body.should.be.an.instanceOf(Object);  //test yung body ng response kung array
+                                          
+                                    done();
+                        });
+                  });
+            
+            });
+            
+      });
