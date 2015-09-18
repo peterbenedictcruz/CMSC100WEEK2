@@ -43,7 +43,8 @@ var request = require('supertest'),
                                     if(err) throw err;
                                     res.should.have.status(200);  //testing ng response kung 200
                                     res.body.should.be.an.instanceOf(Object);  //test yung body ng response kung array
-                                          
+                                    res.studNo.should.match(/^\w+$/);
+                                    res.should.have.keys();
                                     done();
                         });
                   });
