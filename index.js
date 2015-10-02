@@ -7,6 +7,12 @@ var server = app.listen(5000, function(){
 	console.log('Example app listening at http://%s:%s', host, port);
 	
 });
+
+app.use(require('body-parser')());
+app.use(require('method-override')());
+app.use(require(__dirname + '/config/router')(express.Router()));
+app.use(express.static(__dirname + '/public'));
+
 /*
 app.get('/', function(req, res){
 	res.send('Hello World!');
@@ -25,6 +31,4 @@ app.get('/', function(req, res){
 	})
 */
 
-app.use(require('body-parser')());
-app.use(require('method-override')());
-app.use(require(__dirname + '/config/router')(express.Router()));
+
